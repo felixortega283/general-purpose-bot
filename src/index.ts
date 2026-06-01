@@ -4,6 +4,7 @@ import fs, { readdirSync } from "node:fs";
 import path from "node:path";
 import "dotenv/config.js";
 import { Client, Events, GatewayIntentBits, Collection } from "discord.js";
+import { find_commands } from "./modules/command_finder.js";
 import type { SlashCommandData } from "./@types/slash_command_data.js";
 
 // Source - https://stackoverflow.com/a/50052194
