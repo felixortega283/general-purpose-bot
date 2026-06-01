@@ -1,7 +1,5 @@
 import {
   SlashCommandBuilder,
-  CommandInteraction,
-  ChatInputCommandInteraction,
 } from "discord.js";
 
 export const command = {
