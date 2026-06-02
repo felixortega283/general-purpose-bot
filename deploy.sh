@@ -23,7 +23,7 @@ if [ ! -f ".env" ]; then
     cp ./templates/template.env .
     mv template.env .env
     echo "Error: .env file not filled out."
-    echo "Fille out your .env file in the project directory with a prefered text editor"
+    echo "Fill out your .env file in the project directory with a prefered text editor"
     echo "EX: VS Code, vim, Notepad, Notepad++"
     echo "Once you're done, run npm run deploy"
     exit 0
