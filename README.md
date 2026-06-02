@@ -1,9 +1,15 @@
 # General Purpose Discord Bot (GPDB)
 GPDB is a simple general purpose Discord bot that can, show user, and server information.
 
-### Initial setup:
+## Initial setup:
 To setup GPDB, you must have Node.js and npm installed here:
 https://nodejs.org/en/download
+
+### Easy Setup
+
+curl -O https://github.com/felixortega283/general-purpose-bot.git | bash
+
+### Advanced Setup
 
 Clone into the repository
 
