@@ -12,7 +12,6 @@
     "deploy": "chmod +x deploy.sh && ./deploy.sh"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.48",
     "discord.js": "^14.26.4",
     "dotenv": "^17.4.2"
   },
