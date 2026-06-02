@@ -1,7 +1,6 @@
 import "dotenv/config.js";
 import { REST, Routes } from "discord.js";
 import { find_commands } from "./modules/command_finder.js";
-import type { SlashCommandData } from "./@types/slash_command_data.js";
 
 const token = process.env.DISCORD_BOT_TOKEN as string;
 const client_id = process.env.CLIENT_ID as string;

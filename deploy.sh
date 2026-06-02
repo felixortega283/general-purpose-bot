@@ -1,7 +1,26 @@
 #!/bin/bash
 
-echo "Updating repository"
-git pull https://github.com/felixortega283/general-purpose-bot.git
+echo "For this to work, make sure Typescript is installed globally using npm install -g typescript"
+echo "You might have to run it in sudo"
+
+IFS='/'
+update_complete=false
+read -ra path_array <<< "$PWD"
+
+for item in "${path_array[@]}"; do
+    if [ "$item" = "general-purpose-bot" ]; then
+        echo "Updating git repository"
+        git pull https://github.com/felixortega283/general-purpose-bot.git
+        update_complete=true
+    fi
+done
+
+if [ "$update_complete" = false ]; then
+    echo "Installing Discord bot"
+    git clone https://github.com/felixortega283/general-purpose-bot.git
+    cd "general-purpose-bot"
+fi
+
 
 if [ ! -f ".env" ]; then
     cp ./templates/template.env .
