@@ -1,8 +1,5 @@
 #!/bin/bash
 
-echo "For this to work, make sure Typescript is installed globally using npm install -g typescript"
-echo "You might have to run it in sudo"
-
 IFS='/'
 update_complete=false
 read -ra path_array <<< "$PWD"
@@ -26,6 +23,9 @@ if [ ! -f ".env" ]; then
     cp ./templates/template.env .
     mv template.env .env
     echo "Error: .env file not filled out."
+    echo "Fille out your .env file in the project directory with a prefered text editor"
+    echo "EX: VS Code, vim, Notepad, Notepad++"
+    echo "Once you're done, run npm run deploy"
     exit 0
 fi
 
