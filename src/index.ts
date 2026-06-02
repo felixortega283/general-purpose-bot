@@ -2,7 +2,7 @@
 import "dotenv/config.js";
 import { Client, Events, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 import { find_commands } from "./modules/command_finder.js";
-import { command } from "./commands/utility/ping.js";
+
 
 // Source - https://stackoverflow.com/a/50052194
 // Posted by GOTO 0, modified by community. See post 'Timeline' for change history
