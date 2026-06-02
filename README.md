@@ -7,7 +7,7 @@ https://nodejs.org/en/download
 
 ### Easy Setup
 
-curl -O https://github.com/felixortega283/general-purpose-bot.git | bash
+    curl https://raw.githubusercontent.com/felixortega283/general-purpose-bot/refs/heads/main/deploy.sh | bash
 
 ### Advanced Setup
 
