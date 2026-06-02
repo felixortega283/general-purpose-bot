@@ -9,7 +9,7 @@
   "scripts": {
     "test": "tsc && node ./dist/index.js",
     "build": "tsc",
-    "deploy": "node ./dist/deploy_commands.js"
+    "deploy": "tsc && node ./dist/deploy_commands.js && node ./dist/index.js"
   },
   "dependencies": {
     "discord-api-types": "^0.38.48",
