@@ -1,18 +1,40 @@
 import {
+  ChatInputCommandInteraction,
+  EmbedBuilder,
+  Guild,
+  InteractionContextType,
   SlashCommandBuilder,
 } from "discord.js";
 
 export const command = {
   data: new SlashCommandBuilder()
     .setName("server")
-    .setDescription("Provides information about the server."),
-  async execute(interaction: {
-    reply: (arg0: string) => any;
-    guild: { name: string; memberCount: number };
-  }) {
+    .setDescription("Provides information about the server.")
+    .setContexts(InteractionContextType.Guild),
+  async execute(interaction: ChatInputCommandInteraction) {
     // interaction.guild is the object representing the Guild in which the command was run
-    await interaction.reply(
-      `This server is ${interaction.guild.name} and has ${interaction.guild.memberCount} members.`,
-    );
+    if (!interaction.guild) {
+      console.log("There was an error running this command.");
+      return;
+    }
+
+    const embed_reply = new EmbedBuilder()
+      .setTitle(interaction.guild.name)
+      .setThumbnail(interaction.guild.iconURL())
+      .setColor("Aqua")
+      .addFields(
+        {
+          name: "Members",
+          value: interaction.guild.memberCount.toString(),
+          inline: true,
+        },
+        {
+          name: "Created on:",
+          value: interaction.guild.createdAt.toString(),
+          inline: true,
+        },
+      );
+
+    await interaction.reply({embeds: [embed_reply]});
   },
 };
