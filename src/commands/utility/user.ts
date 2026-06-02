@@ -1,14 +1,8 @@
 import {
   ChatInputCommandInteraction,
-  CommandInteraction,
   EmbedBuilder,
-  Guild,
-  GuildMFALevel,
-  InteractionCollector,
   InteractionContextType,
-  Options,
   SlashCommandBuilder,
-  SlashCommandUserOption,
 } from "discord.js";
 
 export const command = {
@@ -33,7 +27,7 @@ export const command = {
 
     if (!interaction.guild) {
       await interaction.reply("There was an error executing this command.");
-      console.log("Guild not found")
+      console.log("Guild not found");
       return;
     }
 
@@ -41,11 +35,11 @@ export const command = {
 
     if (!guild_member.joinedAt) {
       await interaction.reply("There was an error executing this command.");
-      console.log("Join date not found.")
+      console.log("Join date not found.");
       return;
     }
 
-    let nickname = guild_member.nickname
+    let nickname = guild_member.nickname;
 
     if (!nickname) {
       nickname = target.username;
