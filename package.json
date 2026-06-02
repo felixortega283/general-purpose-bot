@@ -14,8 +14,7 @@
   "dependencies": {
     "discord-api-types": "^0.38.48",
     "discord.js": "^14.26.4",
-    "dotenv": "^17.4.2",
-    "nodemon": "^3.1.14"
+    "dotenv": "^17.4.2"
   },
   "devDependencies": {
     "typescript": "^6.0.3"
