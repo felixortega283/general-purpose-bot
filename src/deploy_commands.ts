@@ -1,6 +1,7 @@
 import "dotenv/config.js";
 import { REST, Routes } from "discord.js";
 import { find_commands } from "./modules/command_finder.js";
+import { log_error } from "./modules/logging.js";
 
 const token = process.env.DISCORD_BOT_TOKEN as string;
 const client_id = process.env.CLIENT_ID as string;
@@ -26,9 +27,11 @@ for (const command of commands) {
       { body: commands_JSON },
     );
 
-    console.log(`Successfully reloaded ${data.length} application (/) commands.`);
+    console.log(
+      `Successfully reloaded ${data.length} application (/) commands.`,
+    );
   } catch (error) {
     // And of course, make sure you catch and log any errors!
-    console.error(error);
+    log_error(error);
   }
 })();
