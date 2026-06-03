@@ -8,10 +8,8 @@ export function log_error(error: any): void {
 
   const logs_exist = fs.existsSync(logs_path);
 
-  console.log("cool" + logs_exist);
-
   if (!logs_exist) {
-    console.log("creating logs");
+    console.log("Log folder not found. Creating log folder.");
     fs.mkdirSync(logs_path);
   }
 
@@ -28,7 +26,6 @@ export function log_error(error: any): void {
   }
 
   const file_unix_time: number[] = [];
-  console.log(file_unix_time);
 
   for (const file of current_log_files) {
     const file_name_split = file.split(".");
