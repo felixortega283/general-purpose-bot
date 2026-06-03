@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { __dirname } from "../__dirname.js";
 
 export function log_error(error: any): void {
+  const string_error = error.toString()
   const logs_path = path.join(__dirname, "logs");
   const date = new Date();
 
@@ -15,7 +16,7 @@ export function log_error(error: any): void {
 
   const file_name = date.toUTCString();
   const file_path = path.join(logs_path, file_name);
-  fs.writeFileSync(file_path + ".txt", error);
+  fs.writeFileSync(file_path + ".txt", string_error);
 
   console.warn(error);
 
