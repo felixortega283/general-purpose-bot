@@ -1,7 +1,6 @@
 import {
   ChatInputCommandInteraction,
   EmbedBuilder,
-  Guild,
   InteractionContextType,
   SlashCommandBuilder,
 } from "discord.js";
@@ -14,7 +13,8 @@ export const command = {
   async execute(interaction: ChatInputCommandInteraction) {
     // interaction.guild is the object representing the Guild in which the command was run
     if (!interaction.guild) {
-      console.log("There was an error running this command.");
+      await interaction.reply("There was an error running this command.")
+      console.log("Guild doesn't exist when running /server");
       return;
     }
 
@@ -35,6 +35,6 @@ export const command = {
         },
       );
 
-    await interaction.reply({embeds: [embed_reply]});
+    await interaction.reply({ embeds: [embed_reply] });
   },
 };
