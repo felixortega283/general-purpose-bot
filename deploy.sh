@@ -9,6 +9,7 @@ for item in "${path_array[@]}"; do
         echo "Updating git repository"
         git pull https://github.com/felixortega283/general-purpose-bot.git
         update_complete=true
+        cat changelog.txt
     fi
 done
 
@@ -16,7 +17,6 @@ if [ "$update_complete" = false ]; then
     echo "Installing Discord bot"
     git clone https://github.com/felixortega283/general-purpose-bot.git
     cd "general-purpose-bot"
-    cat changelog.txt
 fi
 
 
