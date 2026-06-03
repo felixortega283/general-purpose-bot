@@ -15,12 +15,13 @@ Clone into the repository
 
     git clone https://github.com/felixortega283/general-purpose-bot/tree/main/src
     
-Then you have to install Typescript globally:
-
-    npm install -g typescript
 Install dependencies:
 
     npm install
+
+You might have to install Typescript globally:
+
+    npm install -g typescript
 
 Now you have to setup your environment variables. You can do this by copying the env template to the project directory, and editing it with your preferred text editor. 
 

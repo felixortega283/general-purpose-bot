@@ -2,7 +2,10 @@
 import "dotenv/config.js";
 import { Client, Events, GatewayIntentBits, Collection, MessageFlags } from "discord.js";
 import { find_commands } from "./modules/command_finder.js";
+import { log_error } from "./modules/logging.js";
 
+
+log_error("test");
 
 // Source - https://stackoverflow.com/a/50052194
 // Posted by GOTO 0, modified by community. See post 'Timeline' for change history
@@ -39,11 +42,7 @@ client.on(Events.InteractionCreate, async (interaction) => {
   try {
     await command.execute(interaction);
   } catch (error) {
-    console.error(
-      `There was an error executing command ${command_name}. Error message ${error}`,
-    );
-
-    console.error(error);
+    log_error(error);
     if (interaction.replied || interaction.deferred) {
       await interaction.followUp({
         content: "There was an error while executing this command!",
