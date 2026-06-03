@@ -16,6 +16,7 @@ if [ "$update_complete" = false ]; then
     echo "Installing Discord bot"
     git clone https://github.com/felixortega283/general-purpose-bot.git
     cd "general-purpose-bot"
+    cat changelog.txt
 fi
 
 
