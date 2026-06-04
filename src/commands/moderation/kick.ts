@@ -68,7 +68,7 @@ export const command = {
     }
 
     const embed = new EmbedBuilder()
-      .setTitle("You've been banned from " + interaction.guild.name)
+      .setTitle("You've been kicked from " + interaction.guild.name)
       .addFields({ name: "Reason:", value: reason });
 
     const dm = await target.createDM();
