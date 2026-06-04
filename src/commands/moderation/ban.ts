@@ -3,6 +3,7 @@ import {
   InteractionContextType,
   MessageFlags,
   ChatInputCommandInteraction,
+  EmbedBuilder,
 } from "discord.js";
 
 export const command = {
@@ -15,6 +16,11 @@ export const command = {
         .setName("target")
         .setDescription("The user you want to ban.")
         .setRequired(true),
+    )
+    .addStringOption((option) =>
+      option
+        .setName("reason")
+        .setDescription("The reason you want to ban a user."),
     ),
   async execute(interaction: ChatInputCommandInteraction) {
     if (!interaction.guild) {
@@ -70,12 +76,25 @@ export const command = {
     if (!target_guild_member.bannable) {
       await interaction.reply({
         content: "I don't have permission to do that :(",
-        flags: MessageFlags.Ephemeral
-      })
+        flags: MessageFlags.Ephemeral,
+      });
       return;
     }
 
-    await interaction.guild.members.ban(target)
+    let reason = interaction.options.getString("string");
+
+    if (!reason) {
+      reason = "No reason provided.";
+    }
+
+    const ban_embed = new EmbedBuilder()
+      .setTitle("You've been banned from " + interaction.guild.name)
+      .addFields({ name: "Reason:", value: reason });
+
+    const dm = await target.createDM();
+    await dm.send({ embeds: [ban_embed] });
+
+    await interaction.guild.members.ban(target);
     await interaction.reply(`${target.username} has been dramatically banned!`);
   },
 };

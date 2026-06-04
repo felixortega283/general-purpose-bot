@@ -1,7 +1,7 @@
-Version 0.2.0 Changelog:
+Version 0.2.1 Changelog:
 ------------------------
-* Added ban command
-* Added kick command
-* Added timeout command (Non-Functional)
+* Added ban reason parameter
+* Added kick reason parameter
+* Both kick and ban DM their reasoning to the target
 * Fixed log limit being 1 instead of 100
 * Minor bug fixes
