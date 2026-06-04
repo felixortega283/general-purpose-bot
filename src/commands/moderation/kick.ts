@@ -3,6 +3,7 @@ import {
   InteractionContextType,
   ChatInputCommandInteraction,
   MessageFlags,
+  EmbedBuilder,
 } from "discord.js";
 
 export const command = {
@@ -15,6 +16,9 @@ export const command = {
         .setName("target")
         .setDescription("The user you want to kick.")
         .setRequired(true),
+    )
+    .addStringOption((option) =>
+      option.setName("reason").setDescription("The reason you kick the user"),
     ),
   async execute(interaction: ChatInputCommandInteraction) {
     const target = interaction.options.getUser("target");
@@ -57,6 +61,18 @@ export const command = {
       return;
     }
 
+    let reason = await interaction.options.getString("reason");
+
+    if (!reason) {
+      reason = "No reason provided.";
+    }
+
+    const embed = new EmbedBuilder()
+      .setTitle("You've been banned from " + interaction.guild.name)
+      .addFields({ name: "Reason:", value: reason });
+
+    const dm = await target.createDM();
+    dm.send({ embeds: [embed] });
     await interaction.guild.members.kick(target);
     await interaction.reply(`${target.username} was comically kicked!`);
   },
