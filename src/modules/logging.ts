@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { __dirname } from "../__dirname.js";
 
 export function log_error(error: any): void {
+  const string_error = error.toString()
   const logs_path = path.join(__dirname, "logs");
   const date = new Date();
 
@@ -15,13 +16,13 @@ export function log_error(error: any): void {
 
   const file_name = date.toUTCString();
   const file_path = path.join(logs_path, file_name);
-  fs.writeFileSync(file_path + ".txt", error);
+  fs.writeFileSync(file_path + ".txt", string_error);
 
   console.warn(error);
 
   const current_log_files = fs.readdirSync(logs_path);
 
-  if (current_log_files.length <= 1) {
+  if (current_log_files.length <= 100) {
     return;
   }
 
@@ -29,7 +30,6 @@ export function log_error(error: any): void {
 
   for (const file of current_log_files) {
     const file_name_split = file.split(".");
-
     const file_date: any = new Date(file_name_split[0] as string);
 
     if (isNaN(file_date)) {
@@ -43,7 +43,7 @@ export function log_error(error: any): void {
 
   let i = file_unix_time.length - 1;
 
-  while (file_unix_time.length > 1) {
+  while (file_unix_time.length > 100) {
     const file_to_remove =
       new Date(file_unix_time[i] as number).toUTCString() + ".txt";
 

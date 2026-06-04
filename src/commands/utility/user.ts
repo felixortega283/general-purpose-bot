@@ -45,7 +45,6 @@ export const command = {
       nickname = target.username;
     }
 
-    console.log(guild_member.user.createdAt.toString());
     const embed_reply = new EmbedBuilder()
       .setColor("Aqua")
       .setTitle(target.username)

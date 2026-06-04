@@ -1,0 +1,62 @@
+import {
+  SlashCommandBuilder,
+  InteractionContextType,
+  ChatInputCommandInteraction,
+  MessageFlags,
+} from "discord.js";
+
+export const command = {
+  data: new SlashCommandBuilder()
+    .setName("kick")
+    .setDescription("Kicks the targetted user.")
+    .setContexts(InteractionContextType.Guild)
+    .addUserOption((option) =>
+      option
+        .setName("target")
+        .setDescription("The user you want to kick.")
+        .setRequired(true),
+    ),
+  async execute(interaction: ChatInputCommandInteraction) {
+    const target = interaction.options.getUser("target");
+
+    if (!target) {
+      await interaction.reply({
+        content: "Please specify a target.",
+        flags: MessageFlags.Ephemeral
+      });
+
+      return;
+    }
+
+    if (!interaction.guild) {
+      await interaction.reply({
+        content: "Error: interaction.guild is null or undefined.",
+        flags: MessageFlags.Ephemeral
+      });
+
+      return;
+    }
+
+    const target_guild = await interaction.guild?.members.fetch(target)
+
+    if (!target_guild) {
+      await interaction.reply({
+        content: "Error fetching target",
+        flags: MessageFlags.Ephemeral
+      });
+
+      return;
+    }
+
+    if (!target_guild.kickable) {
+      await interaction.reply({
+        content: "I don't have permission to kick this user.",
+        flags: MessageFlags.Ephemeral
+      });
+
+      return;
+    }
+
+    await interaction.guild.members.kick(target)
+  },
+};
