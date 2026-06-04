@@ -105,10 +105,12 @@ export const command = {
       });
     }
 
-    const dm = await target.createDM()
-    const embed = new EmbedBuilder().setTitle(`You've been timed out in ${interaction.guild.name}`)
+    const dm = await target.createDM();
+    const embed = new EmbedBuilder().setTitle(
+      `You've been timed out in ${interaction.guild.name}`,
+    );
 
-    await dm.send({embeds: [embed]});
+    await dm.send({ embeds: [embed] });
     await member.timeout(timeout_ms);
   },
 };
