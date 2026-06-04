@@ -9,7 +9,7 @@ import {
 export const command = {
   data: new SlashCommandBuilder()
     .setName("kick")
-    .setDescription("Kicks the targetted user.")
+    .setDescription("Kicks the targeted user.")
     .setContexts(InteractionContextType.Guild)
     .addUserOption((option) =>
       option
