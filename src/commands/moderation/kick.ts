@@ -73,7 +73,7 @@ export const command = {
 
     const dm = await target.createDM();
     dm.send({ embeds: [embed] });
-    await interaction.guild.members.kick(target);
+    await interaction.guild.members.kick(target, reason);
     await interaction.reply(`${target.username} was comically kicked!`);
   },
 };

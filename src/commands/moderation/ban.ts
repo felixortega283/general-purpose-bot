@@ -94,7 +94,7 @@ export const command = {
     const dm = await target.createDM();
     await dm.send({ embeds: [ban_embed] });
 
-    await interaction.guild.members.ban(target);
+    await interaction.guild.members.ban(target, { reason: reason });
     await interaction.reply(`${target.username} has been dramatically banned!`);
   },
 };
