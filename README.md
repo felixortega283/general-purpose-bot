@@ -13,7 +13,7 @@ https://nodejs.org/en/download
 
 Clone into the repository
 
-    git clone https://github.com/felixortega283/general-purpose-bot/tree/main/src
+    git clone https://github.com/felixortega283/general-purpose-bot/
     
 Install dependencies:
 
