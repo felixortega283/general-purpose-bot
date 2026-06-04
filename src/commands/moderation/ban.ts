@@ -76,12 +76,7 @@ export const command = {
       return;
     }
 
-    try {
-      await interaction.guild.members.ban(target);
-    } catch (error) {
-      log_error(error);
-    }
-
+    await interaction.guild.members.ban(target)
     await interaction.reply(`${target.username} has been dramatically banned!`);
   },
 };
