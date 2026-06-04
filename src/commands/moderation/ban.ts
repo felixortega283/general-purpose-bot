@@ -4,7 +4,6 @@ import {
   MessageFlags,
   ChatInputCommandInteraction,
 } from "discord.js";
-import { log_error } from "../../modules/logging.js";
 
 export const command = {
   data: new SlashCommandBuilder()
@@ -70,7 +69,7 @@ export const command = {
 
     if (!target_guild_member.bannable) {
       await interaction.reply({
-        content: "Error: Not enough permissions.",
+        content: "I don't have permission to do that :(",
         flags: MessageFlags.Ephemeral
       })
       return;

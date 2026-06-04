@@ -1,2 +1,7 @@
-Version 0.1.0 Changelog:
-- Added Changelog
+Version 0.2.0 Changelog:
+------------------------
+* Added ban command
+* Added kick command
+* Added timeout command
+* Fixed log limit being 1 instead of 100
+* Minor bug fixes
