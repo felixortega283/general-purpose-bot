@@ -13,8 +13,9 @@ export async function find_commands(): Promise<SlashCommandData> {
       root_command_folder_path,
       command_folder,
     );
-    const command_files = fs.readdirSync(command_folder_path);
 
+    const command_files = fs.readdirSync(command_folder_path);
+      
     for (const command_file of command_files) {
       if (!command_file.endsWith(".js")) {
         continue;

@@ -112,5 +112,7 @@ export const command = {
 
     await dm.send({ embeds: [embed] });
     await member.timeout(timeout_ms);
+
+    await interaction.reply(`${target.username} has been timed out!`);
   },
 };

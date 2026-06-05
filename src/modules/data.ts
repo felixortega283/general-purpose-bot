@@ -1,7 +1,6 @@
-import { Model, Sequelize } from "sequelize";
+import { Sequelize } from "sequelize";
 import { DataTypes } from "sequelize";
 import "dotenv/config.js";
-import { log_error } from "./logging.js";
 
 export const sequelize = new Sequelize(
   "database",
@@ -15,20 +14,29 @@ export const sequelize = new Sequelize(
   },
 );
 
-export const data: any = {}
+export const guild_settings = sequelize.define(
+  "guild_settings",
+  {
+    guild_id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
 
-data.guild_settings = sequelize.define("guild_settings", {
-  guild_id: {
-    type: DataTypes.STRING,
-    unique: true
+    moderator_role: {
+      type: DataTypes.STRING,
+    },
+
+    moderation_commands_enabled: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false
+    }
   },
-  moderator_role_id: {
-    type: DataTypes.STRING
-  }
-});
+  {
+    timestamps: false,
+  },
+);
 
 export function sync_data() {
-    for (const db in data) {
-        data[db].sync()
-    }
+  sequelize.sync();
 }
