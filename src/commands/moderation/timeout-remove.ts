@@ -50,6 +50,9 @@ export const command = {
       .setTitle(`Your timeout from ${interaction.guild.name} has been removed.`)
       .addFields({ name: "Reason", value: reason });
 
+    const dm = await target.createDM();
+    dm.send({ embeds: [embed] });
+
     member.disableCommunicationUntil(null);
     interaction.reply(`Timeout removed from ${target.username}`);
   },

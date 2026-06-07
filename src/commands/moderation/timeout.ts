@@ -106,9 +106,12 @@ export const command = {
     }
 
     const dm = await target.createDM();
-    const embed = new EmbedBuilder().setTitle(
-      `You've been timed out in ${interaction.guild.name}`,
-    );
+    const embed = new EmbedBuilder()
+      .setTitle(`You've been timed out in ${interaction.guild.name}`)
+      .addFields(
+        { name: "Reason", value: reason },
+        { name: "For", value: "sorry this is too much work for now " },
+      );
 
     await dm.send({ embeds: [embed] });
     await member.timeout(timeout_ms);
