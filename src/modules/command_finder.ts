@@ -21,8 +21,8 @@ export async function find_commands(): Promise<SlashCommandData> {
         continue;
       }
       const command_path = path.join(command_folder_path, command_file);
-      const command_raw: SlashCommandData = await import(command_path);
-      const command = command_raw.command
+      const command_raw = await import(command_path);
+      const command: SlashCommandData = command_raw.command
       
       if ("data" in command && "execute" in command) {
         commands.push(command)

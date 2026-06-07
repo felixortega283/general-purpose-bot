@@ -9,7 +9,6 @@ import {
 } from "discord.js";
 import { find_commands } from "./modules/command_finder.js";
 import { log_error } from "./modules/logging.js";
-import { sync_data } from "./modules/data.js";
 
 // Source - https://stackoverflow.com/a/50052194
 // Posted by GOTO 0, modified by community. See post 'Timeline' for change history
@@ -30,7 +29,6 @@ for (const command of commands) {
 // The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
 // It makes some properties non-nullable.
 client.once(Events.ClientReady, (readyClient) => {
-  sync_data()
   console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
